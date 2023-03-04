@@ -1,0 +1,43 @@
+@import "src/scss/vars";
+.enemyMagick {
+  display: flex;
+}
+.body {
+  background-color: $grayBG;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.boardBody {
+  flex: 0 0 70%;
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  position: relative;
+
+  p {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    color: $white;
+    font-weight: 900;
+
+    background-color: $blackTrans;
+    transform: translate(-50%, -0%);
+    font-size: clamp(9px, 2cqi, 10cqi);
+  }
+}
+
+.controlBtn {
+  align-items: center;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+}
