@@ -61,16 +61,63 @@
   animation-duration: 1s;
   animation-name: slidein;
 }
+.death {
+  animation-duration: 1s;
+  animation-name: death;
+}
+.damageHP {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.subHP {
+  font-size: 30px;
+  font-weight: 900;
+  padding: 5px;
+  background-color: $black;
+  border-radius: 100%;
+  letter-spacing: 0px;
+  color: $damageCard;
+  animation-duration: 2s;
+  animation-name: hpDamage;
+}
+
+@keyframes hpDamage {
+  0% {
+    transform: translateY(30px) translate(-50%, -50%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) translate(-50%, -50%);
+    opacity: 0;
+  }
+}
 
 @keyframes slidein {
   0% {
-    transform: rotateY(0deg);
+    transform: translateY(0px);
   }
   50% {
-    transform: rotateY(30deg);
+    transform: translateY(-20px);
   }
 
   100% {
-    transform: rotateY(0deg);
+    transform: translateY(0px);
+  }
+}
+@keyframes death {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }

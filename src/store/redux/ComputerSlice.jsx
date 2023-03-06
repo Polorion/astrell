@@ -42,7 +42,17 @@ const ComputerSlice = createSlice({
       },
       {
         id: 3,
-        isBusy: null,
+        isBusy: {
+          name: "ragnaros",
+          spell: null,
+          attack: 10,
+          price: 5,
+          id: 1,
+          hp: 20,
+          img: ragnaros,
+          description:
+            "Lorem Ipsum не только успешно пережил без заметных изменений пять веков,  недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.",
+        },
       },
       {
         id: 4,
@@ -55,8 +65,36 @@ const ComputerSlice = createSlice({
     ],
     attack: false,
   },
-  reducers: {},
+  reducers: {
+    idDamage(state, { payload }) {
+      state.board = state.board.map((el) => {
+        if (el.id === payload.id && el.isBusy === null) {
+          state.hp = state.hp - payload.attack;
+        }
+        if (el.id === payload.id && el.isBusy) {
+          return {
+            ...el,
+            isBusy: { ...el.isBusy, hp: el.isBusy.hp - payload.attack },
+          };
+        } else {
+          return el;
+        }
+      });
+    },
+    deathComputerSlot(state, { payload }) {
+      state.board = state.board.map((el) => {
+        if (el.id === payload) {
+          return {
+            ...el,
+            isBusy: null,
+          };
+        } else {
+          return el;
+        }
+      });
+    },
+  },
 });
 
-export const { setCardInBoard, setAnimation } = ComputerSlice.actions;
+export const { idDamage, deathComputerSlot } = ComputerSlice.actions;
 export default ComputerSlice.reducer;

@@ -66,8 +66,14 @@ const PlayerSlice = createSlice({
         }
       });
     },
+    setFalseAnimation(state, { payload }) {
+      state.board = state.board.map((el) => {
+        return { ...el, isAttack: false };
+      });
+    },
   },
 });
 
-export const { setCardInBoard, setAnimation } = PlayerSlice.actions;
+export const { setCardInBoard, setAnimation, setFalseAnimation } =
+  PlayerSlice.actions;
 export default PlayerSlice.reducer;
